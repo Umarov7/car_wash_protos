@@ -66,10 +66,9 @@ message ServicesList {
 
 message Filter {
     string name = 1;
-    string description = 2;
-    float price = 3;
-    int32 duration = 4;
-    string created_at = 5;
+    float price = 2;
+    int32 duration = 3;
+    string created_at = 4;
 }
 
 message SearchResp {

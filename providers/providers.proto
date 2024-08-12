@@ -26,10 +26,9 @@ message CreateResp {
 
 message Filter {
     string name = 1;
-    string description = 2;
-    float average_rating = 3;
-    string country = 4;
-    string created_at = 5;
+    float average_rating = 2;
+    string country = 3;
+    string created_at = 4;
 }
 
 message Location {
