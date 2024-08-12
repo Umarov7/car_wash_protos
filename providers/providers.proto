@@ -5,7 +5,23 @@ option go_package = "genproto/providers";
 package providers;
 
 service Providers {
+    rpc CreateProvider (NewProvider) returns (CreateResp);
     rpc SearchProviders (Filter) returns (SearchResp);
+}
+
+message NewProvider {
+    string user_id = 1;
+    string company_name = 2;
+    string description = 3;
+    repeated string services = 4;
+    repeated string availability = 5;
+    float average_rating = 6;
+    Location location = 7;
+}
+
+message CreateResp {
+    string id = 1;
+    string created_at = 2;
 }
 
 message Filter {
