@@ -7,6 +7,7 @@ package user;
 service User {
     rpc GetProfile (ID) returns (Profile);
     rpc UpdateProfile (NewData) returns (UpdateResp);
+    rpc ValidateUser (ID) returns (Void);
 }
 
 message ID {
@@ -34,3 +35,5 @@ message UpdateResp {
     string id = 1;
     string updated_at = 2;
 }
+
+message Void {}
