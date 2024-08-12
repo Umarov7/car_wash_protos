@@ -55,8 +55,7 @@ message CreateResp {
 }
 
 message UpdateResp {
-    string id = 1;
-    string updated_at = 2;
+    string updated_at = 1;
 }
 
 message Booking {
