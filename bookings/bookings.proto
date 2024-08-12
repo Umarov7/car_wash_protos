@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+option go_package = "genproto/bookings";
+
+package bookings;
+
+service Bookings {
+    rpc CreateBooking (NewBooking) returns (CreateResp);
+    rpc GetBooking (ID) returns (Booking);
+    rpc UpdateBooking (NewData) returns (UpdateResp);
+    rpc CancelBooking (ID) returns (Void);
+    rpc ListBookings (Pagination) returns (BookingsList);
+}
+
+message Void {}
+
+message ID {
+    string id = 1;
+}
+
+message Location {
+    string address = 1;
+    string city = 2;
+    string country = 3;
+    string latitude = 4;
+    string longitude = 5;
+}
+
+message NewBooking {
+    string user_id = 1;
+    string provider_id = 2;
+    string service_id = 3;
+    string status = 4;
+    string scheduled_time = 5;
+    Location location = 6;
+    float total_price = 7;
+}
+
+message NewData {
+    string id = 1;
+    string status = 2;
+    string scheduled_time = 3;
+    Location location = 4;
+    float total_price = 5;
+}
+
+message Pagination {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message CreateResp {
+    string id = 1;
+    string created_at = 2;
+}
+
+message UpdateResp {
+    string id = 1;
+    string updated_at = 2;
+}
+
+message Booking {
+    string id = 1;
+    string user_id = 2;
+    string provider_id = 3;
+    string service_id = 4;
+    string status = 5;
+    string scheduled_time = 6;
+    Location location = 7;
+    float total_price = 8;
+    string created_at = 9;
+    string updated_at = 10;
+}
+
+message BookingsList {
+    repeated Booking bookings = 1;
+    int32 page = 2;
+    int32 limit = 3;
+}

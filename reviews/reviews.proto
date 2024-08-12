@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option go_package = "genproto/reviews";
+
+package reviews;
+
+service Reviews {
+    rpc CreateReview (NewReview) returns (CreateResp);
+    rpc UpdateReview (NewData) returns (UpdateResp);
+    rpc DeleteReview (ID) returns (Void);
+    rpc ListReviews (Pagination) returns (ReviewsList);
+}
+
+message Void{}
+
+message ID {
+    string id = 1;
+}
+
+message NewReview {
+    string booking_id = 1;
+    string user_id = 2;
+    string provider_id = 3;
+    int32 rating = 4;
+    string comment = 5;
+}
+
+message CreateResp {
+    string id = 1;
+    string created_at = 2;
+}
+
+message NewData {
+    string id = 1;
+    int32 rating = 2;
+    string comment = 3;
+}
+
+message UpdateResp {
+    string id = 1;
+    string updated_at = 2;
+}
+
+message Pagination {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message Review {
+    string id = 1;
+    string booking_id = 2;
+    string user_id = 3;
+    string provider_id = 4;
+    int32 rating = 5;
+    string comment = 6;
+    string created_at = 7;
+    string updated_at = 8;
+}
+
+message ReviewsList {
+    repeated Review reviews = 1;
+    int32 page = 2;
+    int32 limit = 3;
+}

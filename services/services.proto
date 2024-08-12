@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option go_package = "genproto/services";
+
+package services;
+
+service Services {
+    rpc CreateService (NewService) returns (CreateResp);
+    rpc UpdateService (NewData) returns (UpdateResp);
+    rpc DeleteService (ID) returns (Void);
+    rpc ListServices (Pagination) returns (ServicesList);
+    rpc SearchServices (Filter) returns (SearchResp);
+}
+
+message NewService {
+    string name = 1;
+    string description = 2;
+    float price = 3;
+    int32 duration = 4;
+}
+
+message CreateResp {
+    string id = 1;
+    string created_at = 2;
+}
+
+message NewData {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    int32 duration = 5;
+}
+
+message UpdateResp {
+    string id = 1;
+    string updated_at = 2;
+}
+
+message ID {
+    string id = 1;
+}
+
+message Void {}
+
+message Pagination {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message Service {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    int32 duration = 5;
+    string created_at = 6;
+    string updated_at = 7;
+}
+
+message ServicesList {
+    repeated Service services = 1;
+    int32 page = 2;
+    int32 limit = 3;
+}
+
+message Filter {
+    string name = 1;
+    string description = 2;
+    float price = 3;
+    int32 duration = 4;
+    string created_at = 5;
+}
+
+message SearchResp {
+    repeated Service services = 1;
+}
