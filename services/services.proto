@@ -6,6 +6,7 @@ package services;
 
 service Services {
     rpc CreateService (NewService) returns (CreateResp);
+    rpc GetService (ID) returns (Service);
     rpc UpdateService (NewData) returns (UpdateResp);
     rpc DeleteService (ID) returns (Void);
     rpc ListServices (Pagination) returns (ServicesList);

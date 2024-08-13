@@ -6,6 +6,7 @@ package reviews;
 
 service Reviews {
     rpc CreateReview (NewReview) returns (CreateResp);
+    rpc GetReview (ID) returns (Review);
     rpc UpdateReview (NewData) returns (UpdateResp);
     rpc DeleteReview (ID) returns (Void);
     rpc ListReviews (Pagination) returns (ReviewsList);
