@@ -6,7 +6,17 @@ package providers;
 
 service Providers {
     rpc CreateProvider (NewProvider) returns (CreateResp);
+    rpc GetProvider (ID) returns (Provider);
+    rpc UpdateProvider (NewProviderData) returns (UpdateResp);
+    rpc DeleteProvider (ID) returns (Void);
+    rpc ListProviders (Pagination) returns (ProvidersList);
     rpc SearchProviders (Filter) returns (SearchResp);
+}
+
+message Void {}
+
+message ID {
+    string id = 1;
 }
 
 message NewProvider {
@@ -53,4 +63,30 @@ message Provider {
 
 message SearchResp {
     repeated Provider providers = 1;
+}
+
+message ProvidersList {
+    repeated Provider providers = 1;
+    int32 page = 2;
+    int32 limit = 3;
+    
+}
+
+message Pagination {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message NewProviderData {
+    string id = 1;
+    string company_name = 2;
+    string description = 3;
+    repeated string services = 4;
+    repeated string availability = 5;
+    float average_rating = 6;
+    Location location = 7;
+}
+
+message UpdateResp {
+    string updated_at = 1;
 }
