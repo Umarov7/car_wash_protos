@@ -11,6 +11,7 @@ service Services {
     rpc DeleteService (ID) returns (Void);
     rpc ListServices (Pagination) returns (ServicesList);
     rpc SearchServices (Filter) returns (SearchResp);
+    rpc GetPopularServices (Void) returns (SearchResp);
 }
 
 message NewService {
@@ -54,8 +55,9 @@ message Service {
     string description = 3;
     float price = 4;
     int32 duration = 5;
-    string created_at = 6;
-    string updated_at = 7;
+    int32 total_bookings = 6;
+    string created_at = 7;
+    string updated_at = 8;
 }
 
 message ServicesList {
