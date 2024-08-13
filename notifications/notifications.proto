@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "genproto/notifications";
+
+package notifications;
+
+service Notifications {
+    rpc CreateNotification (NewNotification) returns (ID);
+    rpc GetNotification (ID) returns (Notification);
+}
+
+message ID {
+    string id = 1;
+}
+
+message NewNotification {
+    string user_id = 1;
+    string title = 2;
+    string message = 3;
+}
+
+message Notification {
+    string id = 1;
+    string user_id = 2;
+    string title = 3;
+    string message = 4;
+    string created_at = 5;
+}
