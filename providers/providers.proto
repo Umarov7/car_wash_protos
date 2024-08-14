@@ -56,7 +56,6 @@ message CreateResp {
 message Filter {
     string company_name = 1;
     float average_rating = 2;
-    string created_at = 3;
 }
 
 message Location {
